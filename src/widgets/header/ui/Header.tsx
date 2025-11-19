@@ -2,36 +2,24 @@
 
 import clsx from "clsx";
 import { useSidebarStore } from "@/shared/store/useSidebarStore";
-import { Bell, PanelLeftOpen } from "lucide-react";
-import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
+import { Bell, Search } from "lucide-react";
 
 export default function Header() {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
-  const toggleSidebar = useSidebarStore((s) => s.toggleSidebar);
 
   return (
     <div
       className={clsx(
-        "fixed right-0 flex justify-end items-center h-16 px-4 border-b border-b-gray-200 transition-default",
+        "fixed right-0 flex justify-between items-center h-16 px-6 bg-white border-b border-b-gray-200 transition-default",
         {
-          "left-56": sidebarOpen,
-          "left-16": !sidebarOpen,
+          "left-64": sidebarOpen,
+          "left-[52px]": !sidebarOpen,
         }
       )}
     >
-      {/* <div
-        className={clsx(
-          "relative flex-center size-8 rounded-lg group transition-default hover:cursor-pointer hover:bg-hover-bg",
-          {
-            "opacity-0": sidebarOpen,
-            "opacity-100": !sidebarOpen,
-          }
-        )}
-        onClick={toggleSidebar}
-      >
-        <PanelLeftOpen size={18} className="text-gray-700" />
-        <DefaultTooltip direction="right" label="펼치기" />
-      </div> */}
+      <div className="flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
+        <Search size={18} className="text-gray-700" />
+      </div>
       <div className="flex gap-4">
         <div className="relative flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
           <Bell size={18} className="text-gray-700" />

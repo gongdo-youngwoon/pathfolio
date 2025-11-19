@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Sidebar from "@/widgets/sidebar/ui/Sidebar";
 import "./globals.css";
 import Header from "@/widgets/header/ui/Header";
+import DefaultPageWrapper from "./wrapper/DefaultPageWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <Sidebar />
         <Header />
-        {children}
+        <Sidebar />
+        <DefaultPageWrapper>{children}</DefaultPageWrapper>
       </body>
     </html>
   );

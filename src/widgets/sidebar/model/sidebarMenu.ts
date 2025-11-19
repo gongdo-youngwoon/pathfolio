@@ -1,16 +1,13 @@
 import {
   Plus,
-  Search,
   Star,
   NotebookPen,
   CalendarClock,
-  FileCheck2,
   Target,
   LineChart,
-  School,
-  Building,
-  GraduationCap,
   Users,
+  GraduationCap,
+  ClipboardList,
 } from "lucide-react";
 
 export const SIDEBAR_MENU = [
@@ -25,22 +22,22 @@ export const SIDEBAR_MENU = [
         href: "/",
       },
       {
-        id: "search",
-        icon: Search,
-        label: "검색",
-        href: "/search",
-      },
-      {
         id: "favorites",
         icon: Star,
         label: "즐겨찾기",
         href: "/favorites",
       },
+      {
+        id: "community",
+        icon: Users,
+        label: "커뮤니티",
+        href: "/community",
+      },
     ],
   },
   {
     sectionId: "section-2",
-    sectionLabel: "AI 에이전트",
+    sectionLabel: "에이전트",
     items: [
       {
         id: "ai-binote",
@@ -56,7 +53,7 @@ export const SIDEBAR_MENU = [
       },
       {
         id: "ai-evaluation",
-        icon: FileCheck2,
+        icon: ClipboardList,
         label: "수행평가",
         href: "/agents/evaluation",
       },
@@ -80,34 +77,9 @@ export const SIDEBAR_MENU = [
       },
       {
         id: "admission-finder",
-        icon: School,
+        icon: GraduationCap,
         label: "대학 전형 찾기",
         href: "/admission/finder",
-      },
-    ],
-  },
-
-  {
-    sectionId: "section-4",
-    sectionLabel: "커뮤니티",
-    items: [
-      {
-        id: "community-school",
-        icon: Building,
-        label: "학교별",
-        href: "/community/school",
-      },
-      {
-        id: "community-major",
-        icon: GraduationCap,
-        label: "전공별",
-        href: "/community/major",
-      },
-      {
-        id: "community-interest",
-        icon: Users,
-        label: "관심사별",
-        href: "/community/interests",
       },
     ],
   },
