@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSidebarStore } from "@/shared/store/useSidebarStore";
 import { SIDEBAR_MENU } from "../model/sidebarMenu";
 import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
@@ -7,10 +7,11 @@ import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
 export default function SidebarMenuList() {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <div
-      className={clsx("flex flex-col", {
+      className={clsx("flex flex-col mb-6", {
         "gap-6": sidebarOpen,
       })}
     >
@@ -36,6 +37,7 @@ export default function SidebarMenuList() {
                           pathname !== menu.href,
                       }
                     )}
+                    onClick={() => router.push(menu.href)}
                   >
                     <Icon size={18} className="shrink-0" />
                     {sidebarOpen && (

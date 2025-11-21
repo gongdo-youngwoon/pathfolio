@@ -12,7 +12,7 @@ export default function DefaultPageWrapper({
 
   return (
     <div
-      className={clsx("py-16 transition-default", {
+      className={clsx("pt-16 transition-default", {
         "pl-64": sidebarOpen,
         "pl-[52px]": !sidebarOpen,
       })}

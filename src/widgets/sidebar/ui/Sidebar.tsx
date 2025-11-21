@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { useSidebarStore } from "@/shared/store/useSidebarStore";
 import SidebarHeader from "./SidebarHeader";
 import SidebarMenuList from "./SidebarMenuList";
+import RecentChatThreads from "./RecentChatThreads";
 
 export default function Sidebar() {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
@@ -20,6 +21,7 @@ export default function Sidebar() {
     >
       <SidebarHeader />
       <SidebarMenuList />
+      {sidebarOpen && <RecentChatThreads />}
     </div>
   );
 }

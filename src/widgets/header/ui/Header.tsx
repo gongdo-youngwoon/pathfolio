@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useSidebarStore } from "@/shared/store/useSidebarStore";
 import { Bell, Search } from "lucide-react";
+import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
 
 export default function Header() {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
