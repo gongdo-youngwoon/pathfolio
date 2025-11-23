@@ -4,6 +4,7 @@ import Sidebar from "@/widgets/sidebar/ui/Sidebar";
 import "./globals.css";
 import Header from "@/widgets/header/ui/Header";
 import DefaultPageWrapper from "./wrapper/DefaultPageWrapper";
+import DeleteDialog from "@/shared/ui/dialog/DeleteDialog";
 
 export const metadata: Metadata = {
   title: "패스폴리오",
@@ -28,6 +29,7 @@ export default function RootLayout({
         <Header />
         <Sidebar />
         <DefaultPageWrapper>{children}</DefaultPageWrapper>
+        <DeleteDialog />
       </body>
     </html>
   );

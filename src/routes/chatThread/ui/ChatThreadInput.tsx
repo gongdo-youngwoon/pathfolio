@@ -12,10 +12,10 @@ interface ChatThreadInputProps {
 
 export default function ChatThreadInput({ id }: ChatThreadInputProps) {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
-  const { addMessageToThread } = useChatStore((s) => s);
+  const { addMessageToThread, setIsThinking } = useChatStore((s) => s);
+  const [isComposing, setIsComposing] = useState(false);
   const [textareaValue, setTextareaValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const isRunningRef = useRef(false);
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
@@ -27,17 +27,11 @@ export default function ChatThreadInput({ id }: ChatThreadInputProps) {
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
   };
 
-  const sendUserMessage = () => {
-    console.log(1);
-    const message = { role: "user", content: textareaValue };
-
+  const sendUserMessage = (value: string) => {
+    const message = { role: "user", content: value };
     addMessageToThread(id, message);
+    setIsThinking(true);
     setTextareaValue("");
-
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -54,13 +48,15 @@ export default function ChatThreadInput({ id }: ChatThreadInputProps) {
           className="w-full mb-3 text-gray-700 text-sm resize-none outline-none"
           rows={2}
           value={textareaValue}
+          onCompositionStart={() => setIsComposing(true)}
+          onCompositionEnd={() => setIsComposing(false)}
           onChange={handleChange}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
+            if (e.key === "Enter" && !e.shiftKey && !isComposing) {
               e.preventDefault();
 
               if (textareaValue.length > 0) {
-                sendUserMessage();
+                sendUserMessage(textareaValue);
               }
             }
           }}
@@ -86,7 +82,7 @@ export default function ChatThreadInput({ id }: ChatThreadInputProps) {
               })}
               onClick={() => {
                 if (textareaValue.length > 0) {
-                  sendUserMessage();
+                  sendUserMessage(textareaValue);
                 }
               }}
             >

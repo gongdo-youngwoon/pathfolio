@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useChatStore } from "@/shared/store/useChatStore";
 import { MessagesSquare, Trash2 } from "lucide-react";
+import { useDeleteStore } from "@/shared/store/useDeleteStore";
 
 export default function RecentChatThreads() {
   const { chatThreads, initChatThreads, removeChatThread } = useChatStore(
     (s) => s
   );
+  const { openDeleteDialog } = useDeleteStore((s) => s);
   const router = useRouter();
 
   useEffect(() => {
     initChatThreads();
-  }, []);
+  }, [initChatThreads]);
 
   if (chatThreads.length === 0) {
     return null;
@@ -39,7 +41,9 @@ export default function RecentChatThreads() {
               <Trash2
                 size={16}
                 className="absolute top-2.5 right-2 text-error hidden group-hover:block hover:cursor-pointer"
-                onClick={() => removeChatThread(thread.id)}
+                onClick={() => {
+                  openDeleteDialog(() => removeChatThread(thread.id));
+                }}
               />
             </li>
           );

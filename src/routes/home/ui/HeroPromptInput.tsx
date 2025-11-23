@@ -8,10 +8,10 @@ import { useChatStore } from "@/shared/store/useChatStore";
 import { Mic, Paperclip, Send } from "lucide-react";
 
 export default function HeroPromptInput() {
-  const { prependChatThread } = useChatStore((s) => s);
+  const { setIsThinking, prependChatThread } = useChatStore((s) => s);
+  const [isComposing, setIsComposing] = useState(false);
   const [textareaValue, setTextareaValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const isRunningRef = useRef(false);
   const router = useRouter();
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -25,9 +25,6 @@ export default function HeroPromptInput() {
   };
 
   const createChatThread = (initialMessage: string) => {
-    if (isRunningRef.current) return;
-    isRunningRef.current = true;
-
     const id = nanoid();
     const thread = {
       id,
@@ -35,6 +32,7 @@ export default function HeroPromptInput() {
       createdAt: Date.now(),
     };
     prependChatThread(thread);
+    setIsThinking(true);
     router.push(`/c/${id}`);
   };
 
@@ -46,9 +44,11 @@ export default function HeroPromptInput() {
         className="w-full mb-3 text-gray-700 text-sm resize-none outline-none"
         rows={2}
         value={textareaValue}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
         onChange={handleChange}
         onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
+          if (e.key === "Enter" && !e.shiftKey && !isComposing) {
             e.preventDefault();
 
             if (textareaValue.length > 0) {

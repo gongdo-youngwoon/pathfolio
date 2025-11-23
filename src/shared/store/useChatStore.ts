@@ -7,10 +7,12 @@ export interface ChatTreadSchema {
 }
 
 type SidebarState = {
+  isThinking: boolean;
   chatThreads: ChatTreadSchema[];
 };
 
 type SidebarActions = {
+  setIsThinking: (status: boolean) => void;
   prependChatThread: (thread: ChatTreadSchema) => void;
   initChatThreads: () => void;
   removeChatThread: (id: string) => void;
@@ -21,7 +23,10 @@ type SidebarActions = {
 };
 
 export const useChatStore = create<SidebarState & SidebarActions>((set) => ({
+  isThinking: false,
   chatThreads: [],
+
+  setIsThinking: (status) => set(() => ({ isThinking: status })),
 
   // 1) prepend
   prependChatThread: (thread) =>
@@ -52,7 +57,6 @@ export const useChatStore = create<SidebarState & SidebarActions>((set) => ({
       const updated = state.chatThreads.map((t) =>
         t.id === threadId ? { ...t, messages: [...t.messages, message] } : t
       );
-
       localStorage.setItem("chatThreads", JSON.stringify(updated));
       return { chatThreads: updated };
     }),
