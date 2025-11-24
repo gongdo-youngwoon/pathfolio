@@ -40,22 +40,22 @@ export const SIDEBAR_MENU = [
     sectionLabel: "에이전트",
     items: [
       {
-        id: "ai-binote",
+        id: "binote",
         icon: NotebookPen,
         label: "빈노트",
         href: "/agents/binote",
       },
       {
-        id: "ai-scheduler",
+        id: "scheduler",
         icon: CalendarClock,
         label: "스케줄러",
         href: "/agents/scheduler",
       },
       {
-        id: "ai-evaluation",
+        id: "assessment-assistant",
         icon: ClipboardList,
         label: "수행평가",
-        href: "/agents/evaluation",
+        href: "/agents/assessment-assistant",
       },
     ],
   },
@@ -64,19 +64,19 @@ export const SIDEBAR_MENU = [
     sectionLabel: "입시진로",
     items: [
       {
-        id: "admission-record",
+        id: "record-analysis",
         icon: Target,
         label: "생기부 진단",
         href: "/admission/record-analysis",
       },
       {
-        id: "admission-simulator",
+        id: "simulator",
         icon: LineChart,
         label: "대입 시뮬레이터",
         href: "/admission/simulator",
       },
       {
-        id: "admission-finder",
+        id: "finder",
         icon: GraduationCap,
         label: "대학 전형 찾기",
         href: "/admission/finder",

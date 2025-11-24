@@ -11,7 +11,7 @@ export default function SidebarMenuList() {
 
   return (
     <div
-      className={clsx("flex flex-col mb-6", {
+      className={clsx("flex flex-col px-2 bg-white", {
         "gap-6": sidebarOpen,
       })}
     >

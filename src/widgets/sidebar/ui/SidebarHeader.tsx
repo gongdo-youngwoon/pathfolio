@@ -8,7 +8,7 @@ export default function SidebarHeader() {
   const toggleSidebar = useSidebarStore((s) => s.toggleSidebar);
 
   return (
-    <div className="flex justify-between items-center pt-3 px-2 mb-4">
+    <div className="sticky top-0 flex justify-between items-center px-2 py-4 bg-white z-10">
       <div className="flex items-center h-9">
         <div
           className={clsx("relative flex-center size-9 rounded-lg group", {

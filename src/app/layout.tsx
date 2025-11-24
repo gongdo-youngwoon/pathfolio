@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Sidebar from "@/widgets/sidebar/ui/Sidebar";
-import "./globals.css";
-import Header from "@/widgets/header/ui/Header";
+import TanstackQueryProvider from "./provider/TanstackQueryProvider";
 import DefaultPageWrapper from "./wrapper/DefaultPageWrapper";
+import Header from "@/widgets/header/ui/Header";
+import Sidebar from "@/widgets/sidebar/ui/Sidebar";
+import SuccessAlert from "@/shared/ui/alert/SuccessAlert";
 import DeleteDialog from "@/shared/ui/dialog/DeleteDialog";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "패스폴리오",
@@ -26,10 +28,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <Header />
-        <Sidebar />
-        <DefaultPageWrapper>{children}</DefaultPageWrapper>
-        <DeleteDialog />
+        <TanstackQueryProvider>
+          <Header />
+          <Sidebar />
+          <DefaultPageWrapper>{children}</DefaultPageWrapper>
+          <SuccessAlert />
+          <DeleteDialog />
+        </TanstackQueryProvider>
       </body>
     </html>
   );

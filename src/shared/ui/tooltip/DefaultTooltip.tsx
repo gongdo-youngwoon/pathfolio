@@ -8,7 +8,7 @@ interface DirectionalTooltipProps {
 const positionClasses: Record<Direction, string> = {
   top: "",
   right: "absolute top-1/2 -translate-y-1/2 -right-4 translate-x-full",
-  bottom: "",
+  bottom: "absolute -bottom-9",
   left: "",
 };
 

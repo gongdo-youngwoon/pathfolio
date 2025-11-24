@@ -12,18 +12,16 @@ export default function Sidebar() {
   return (
     <div
       className={clsx(
-        "fixed top-0 bottom-0 border-r border-gray-200 transition-default",
+        "fixed top-0 bottom-0 pb-8 bg-white border-r border-gray-200 transition-default z-10 container-scroll",
         {
-          "w-64": sidebarOpen,
+          "w-64 overflow-y-auto": sidebarOpen,
           "w-[52px]": !sidebarOpen,
         }
       )}
     >
       <SidebarHeader />
-      <div className="h-[calc(100vh-52px)] px-2 pb-8 overflow-y-auto">
-        <SidebarMenuList />
-        {sidebarOpen && <RecentChatThreads />}
-      </div>
+      <SidebarMenuList />
+      {sidebarOpen && <RecentChatThreads />}
     </div>
   );
 }

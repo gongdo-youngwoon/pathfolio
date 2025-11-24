@@ -4,14 +4,8 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { useChatStore } from "@/shared/store/useChatStore";
 import { getTestResponse } from "@/shared/utils/getTestResponse";
-import {
-  Copy,
-  Ellipsis,
-  RefreshCw,
-  ThumbsDown,
-  ThumbsUp,
-  Upload,
-} from "lucide-react";
+import { ACTION_ITEMS } from "../model/actionItems";
+import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
 
 interface ChatThreadProps {
   id: string;
@@ -25,10 +19,8 @@ export default function ChatThread({ id }: ChatThreadProps) {
   useEffect(() => {
     const lastMessage = chatThread?.messages.at(-1);
 
-    // 유저 메시지가 없거나 마지막 메시지가 assistant면 아무것도 안함
     if (!lastMessage || lastMessage.role !== "user") return;
 
-    // 2초 후 assistant 메시지 추가 + 생각중 해제
     const timer = setTimeout(() => {
       addMessageToThread(id, {
         role: "assistant",
@@ -56,7 +48,7 @@ export default function ChatThread({ id }: ChatThreadProps) {
             <li
               key={index}
               className={clsx("text-sm text-gray-700", {
-                "self-end max-w-[480px] p-4 bg-hover-bg rounded-lg":
+                "self-end max-w-[480px] px-4 py-2 bg-hover-bg rounded-lg":
                   message.role === "user",
               })}
             >
@@ -64,24 +56,33 @@ export default function ChatThread({ id }: ChatThreadProps) {
                 {message.content}
               </div>
               {message.role === "assistant" && (
-                <div className="flex items-center gap-3 h-14 text-gray-500">
-                  <Copy size={18} />
-                  <ThumbsUp size={18} />
-                  <ThumbsDown size={18} />
-                  <Upload size={18} />
-                  <RefreshCw size={18} />
-                  <Ellipsis size={18} />
-                </div>
+                <ul className="flex items-center gap-2 h-14">
+                  {ACTION_ITEMS.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <li
+                        key={item.id}
+                        className="relative flex-center size-7 rounded-lg group hover:cursor-pointer hover:bg-hover-bg"
+                      >
+                        <Icon
+                          size={16}
+                          className="text-gray-500 group-hover:text-gray-700"
+                        />
+                        <DefaultTooltip direction="bottom" label={item.label} />
+                      </li>
+                    );
+                  })}
+                </ul>
               )}
             </li>
           );
         })}
         {isThinking && (
-          <li className="self-start flex-center gap-1 items-end p-4 bg-hover-bg rounded-lg">
+          <div className="self-start flex-center gap-1 items-end p-4 bg-hover-bg rounded-lg">
             <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full"></span>
             <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full animation-delay-150"></span>
             <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full animation-delay-300"></span>
-          </li>
+          </div>
         )}
       </ul>
     </div>

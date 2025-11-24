@@ -36,12 +36,15 @@ export default function ChatThreadInput({ id }: ChatThreadInputProps) {
 
   return (
     <div
-      className={clsx("fixed bottom-0 right-0 bg-white pb-10", {
-        "left-64": sidebarOpen,
-        "left-[52px]": !sidebarOpen,
-      })}
+      className={clsx(
+        "fixed bottom-0 right-0 bg-white pb-10 transition-default",
+        {
+          "left-64": sidebarOpen,
+          "left-[52px]": !sidebarOpen,
+        }
+      )}
     >
-      <div className="w-[824px] mx-auto p-4 bg-white border border-gray-200 rounded-xl transition-default has-focus:border-primary has-focus:ring-2 has-focus:ring-primary-bg">
+      <div className="w-[824px] mx-auto p-4 bg-white border border-gray-200 rounded-xl transition-default has-focus:border-primary has-focus:ring-2 has-focus:ring-primary/15">
         <textarea
           ref={textareaRef}
           placeholder="무엇이든 물어보세요."

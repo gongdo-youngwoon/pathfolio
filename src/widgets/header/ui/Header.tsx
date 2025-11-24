@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <div
       className={clsx(
-        "fixed right-0 flex justify-between items-center h-16 px-6 bg-white border-b border-b-gray-200 transition-default",
+        "fixed right-0 flex justify-between items-center h-16 px-6 bg-white border-b border-b-gray-200 transition-default z-10",
         {
           "left-64": sidebarOpen,
           "left-[52px]": !sidebarOpen,

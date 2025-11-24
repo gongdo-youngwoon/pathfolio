@@ -24,6 +24,24 @@
   .transition-default {
     @apply transition-all duration-300 ease-out;
   }
+
+  .container-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d470 transparent;
+  }
+
+  .container-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .container-scroll::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 4px;
+  }
+
+  .container-scroll::-webkit-scrollbar-thumb:hover {
+    background: #c0c0c0;
+  }
 }
 
 html {

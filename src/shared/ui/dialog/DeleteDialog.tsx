@@ -9,22 +9,21 @@ export default function DeleteDialog() {
     useDeleteStore((s) => s);
   return (
     <div
-      className={clsx("fixed inset-0 bg-gray-700/10", {
+      className={clsx("fixed inset-0 bg-gray-700/10 z-10", {
         "flex-center": isDeleteDialogOpen,
         hidden: !isDeleteDialogOpen,
       })}
     >
-      <div className="relative flex-center flex-col w-96 py-6 bg-white rounded-lg shadow-md">
-        <X
-          className="absolute top-4 right-4 text-gray-400 hover:cursor-pointer"
-          onClick={closeDeleteDialog}
-        />
+      <div className="relative flex-center flex-col w-80 py-6 bg-white rounded-lg shadow-md">
+        <div className="absolute top-2 right-2 flex-center size-7 rounded-full text-gray-400 transition-default hover:cursor-pointer hover:bg-hover-bg hover:text-gray-500">
+          <X size={20} onClick={closeDeleteDialog} />
+        </div>
         <CircleAlert size={48} className="mb-4 text-error" />
-        <div className="mb-1 text-xl text-gray-700 font-bold">
+        <div className="mb-1 text-lg text-gray-700 font-bold">
           정말로 삭제하시겠습니까?
         </div>
-        <div className="mb-8 text-sm text-gray-500">
-          삭제 내용은 복구할 수 없습니다.
+        <div className="mb-6 text-sm text-gray-500">
+          삭제한 내용은 복구할 수 없습니다.
         </div>
         <div className="flex gap-2 text-sm">
           <div
