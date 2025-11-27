@@ -9,7 +9,7 @@ const positionClasses: Record<Direction, string> = {
   top: "",
   right: "absolute top-1/2 -translate-y-1/2 -right-4 translate-x-full",
   bottom: "absolute -bottom-9",
-  left: "",
+  left: "absolute top-1/2 -translate-y-1/2 -left-2 -translate-x-full",
 };
 
 export default function DefaultTooltip({

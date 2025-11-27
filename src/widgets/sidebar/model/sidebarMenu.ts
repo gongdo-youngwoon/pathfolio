@@ -52,10 +52,10 @@ export const SIDEBAR_MENU = [
         href: "/agents/scheduler",
       },
       {
-        id: "assessment-assistant",
+        id: "performance-assessment",
         icon: ClipboardList,
         label: "수행평가",
-        href: "/agents/assessment-assistant",
+        href: "/agents/performance-assessment",
       },
     ],
   },

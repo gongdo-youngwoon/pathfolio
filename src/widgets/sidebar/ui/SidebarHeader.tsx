@@ -44,7 +44,7 @@ export default function SidebarHeader() {
           onClick={toggleSidebar}
         >
           <PanelLeftClose size={18} />
-          <DefaultTooltip direction="right" label="접기" />
+          <DefaultTooltip direction="left" label="접기" />
         </div>
       )}
     </div>
