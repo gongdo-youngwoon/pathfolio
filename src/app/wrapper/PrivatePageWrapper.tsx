@@ -1,9 +1,9 @@
 "use client";
 
-import { useSidebarStore } from "@/shared/store/useSidebarStore";
 import clsx from "clsx";
+import { useSidebarStore } from "@/shared/store/useSidebarStore";
 
-export default function DefaultPageWrapper({
+export default function PrivatePageWrapper({
   children,
 }: {
   children: React.ReactNode;

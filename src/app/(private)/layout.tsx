@@ -1,0 +1,18 @@
+import { Fragment } from "react/jsx-runtime";
+import PrivatePageHeader from "@/widgets/header/ui/PrivatePageHeader";
+import Sidebar from "@/widgets/sidebar/ui/Sidebar";
+import PrivatePageWrapper from "../wrapper/PrivatePageWrapper";
+import SuccessAlert from "@/shared/ui/alert/SuccessAlert";
+import DeleteDialog from "@/shared/ui/dialog/DeleteDialog";
+
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Fragment>
+      <PrivatePageHeader />
+      <Sidebar />
+      <PrivatePageWrapper>{children}</PrivatePageWrapper>
+      <SuccessAlert />
+      <DeleteDialog />
+    </Fragment>
+  );
+}

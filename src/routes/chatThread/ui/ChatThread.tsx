@@ -6,6 +6,7 @@ import { useChatStore } from "@/shared/store/useChatStore";
 import { getTestResponse } from "@/shared/utils/getTestResponse";
 import { ACTION_ITEMS } from "../model/actionItems";
 import DefaultTooltip from "@/shared/ui/tooltip/DefaultTooltip";
+import DotWaveLoading from "@/shared/ui/loading/DotWaveLoading";
 
 interface ChatThreadProps {
   id: string;
@@ -77,13 +78,7 @@ export default function ChatThread({ id }: ChatThreadProps) {
             </li>
           );
         })}
-        {isThinking && (
-          <div className="self-start flex-center gap-1 items-end p-4 bg-hover-bg rounded-lg">
-            <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full"></span>
-            <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full animation-delay-150"></span>
-            <span className="animate-wave-dot bg-primary w-2 h-2 rounded-full animation-delay-300"></span>
-          </div>
-        )}
+        {isThinking && <DotWaveLoading />}
       </ul>
     </div>
   );

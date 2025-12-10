@@ -19,7 +19,7 @@ export const SIDEBAR_MENU = [
         id: "new-question",
         icon: Plus,
         label: "새 질문",
-        href: "/",
+        href: "/ai-chat",
       },
       {
         id: "favorites",
@@ -52,10 +52,10 @@ export const SIDEBAR_MENU = [
         href: "/agents/scheduler",
       },
       {
-        id: "performance-assessment",
+        id: "assessment",
         icon: ClipboardList,
         label: "수행평가",
-        href: "/agents/performance-assessment",
+        href: "/apps/assessment",
       },
     ],
   },

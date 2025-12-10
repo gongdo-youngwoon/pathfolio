@@ -1,12 +1,12 @@
 "use client";
 
 import clsx from "clsx";
+import { usePathname } from "next/navigation";
 import { useSidebarStore } from "@/shared/store/useSidebarStore";
 import { Bell, Search } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { SIDEBAR_MENU } from "@/widgets/sidebar/model/sidebarMenu";
 
-export default function Header() {
+export default function PrivatePageHeader() {
   const sidebarOpen = useSidebarStore((s) => s.sidebarOpen);
   const pathname = usePathname();
 
@@ -32,10 +32,10 @@ export default function Header() {
       <div className="text-gray-900 font-semibold">{currentPageTitle}</div>
       <div className="flex gap-2">
         <div className="flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
-          <Search size={18} className="text-gray-700" />
+          <Search size={20} className="text-gray-700" />
         </div>
         <div className="relative flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
-          <Bell size={18} className="text-gray-700" />
+          <Bell size={20} className="text-gray-700" />
           <div className="absolute top-1 right-1 size-1.5 bg-primary rounded-full" />
         </div>
         <div className="flex gap-2 pl-2">

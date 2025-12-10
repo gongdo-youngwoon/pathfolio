@@ -1,50 +1,60 @@
 import { create } from "zustand";
-
-// 더미 수행평가 초안
-const DUMMY_PERFORMANCE_ASSESSMENT = `
-[수행평가 초안]
-
-1. 평가 주제
-- 문학 작품 속 인물 분석 및 감상문 작성
-
-2. 평가 목표
-- 작품의 주제를 이해하고 핵심 표현을 찾아 설명할 수 있다.
-- 등장인물의 성격을 근거와 함께 분석할 수 있다.
-
-3. 제출 형식
-- A4 1~2장 분량
-- 표지 포함, 본문 글자 크기 11pt
-
-4. 평가 기준
-- 주제 이해도 (30점)
-- 인물 분석의 타당성 (40점)
-- 글의 구성과 표현 (30점)
-`;
+import { DUMMY_PERFORMANCE_ASSESSMENT } from "./dummyPerformanceAssessment";
 
 interface State {
-  isGenerating: boolean; // 생성 중인지 표시
-  generatedDraft: string | null; // 생성된 초안
+  isGenerating: boolean;
+  generatedDraft: string | null;
+  loadingLogs: string[];
 }
 
 interface Actions {
-  generatePerformanceAssessment: () => void; // 초안 생성 함수
-  resetDraft: () => void; // 초기화 함수
+  generatePerformanceAssessment: () => void;
+  resetDraft: () => void;
 }
 
 export const usePerformanceAssessmentStore = create<State & Actions>((set) => ({
   isGenerating: false,
   generatedDraft: null,
+  loadingLogs: [],
 
   generatePerformanceAssessment: () => {
-    set({ isGenerating: true });
+    const STEPS = [
+      "📄 제출된 수행평가 지시서 내용을 정밀 분석 중입니다.",
+      "🤖 핵심 주제와 학습 목표, 중요 키워드를 추출하고 있습니다.",
+      "🧠 관련 교과 자료 및 최신 AI 연구 정보를 참조하며 학습 중입니다.",
+      "📊 평가 기준과 핵심 성취 요소를 체계적으로 구조화하고 있습니다.",
+      "✍️ 논리적 흐름과 근거 기반 문단을 생성하며 초안을 구성하고 있습니다.",
+      "✅ 생성된 초안을 최종 검토 및 교정하여 제출 가능한 형태로 준비 중입니다.",
+    ];
 
-    setTimeout(() => {
-      set({
-        generatedDraft: DUMMY_PERFORMANCE_ASSESSMENT,
-        isGenerating: false,
-      });
-    }, 3000);
+    set({ isGenerating: true, loadingLogs: [] });
+
+    let index = 0;
+
+    const interval = setInterval(() => {
+      // 새 메시지를 로그에 추가
+      set((state) => ({
+        loadingLogs: [...state.loadingLogs, STEPS[index]],
+      }));
+
+      index++;
+
+      // 마지막이면 완료
+      if (index >= STEPS.length) {
+        clearInterval(interval);
+
+        set({
+          generatedDraft: DUMMY_PERFORMANCE_ASSESSMENT,
+          isGenerating: false,
+        });
+      }
+    }, 2000);
   },
 
-  resetDraft: () => set({ isGenerating: false, generatedDraft: "" }),
+  resetDraft: () =>
+    set({
+      isGenerating: false,
+      generatedDraft: null,
+      loadingLogs: [],
+    }),
 }));

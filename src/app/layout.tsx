@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import TanstackQueryProvider from "./provider/TanstackQueryProvider";
-import DefaultPageWrapper from "./wrapper/DefaultPageWrapper";
-import Header from "@/widgets/header/ui/Header";
-import Sidebar from "@/widgets/sidebar/ui/Sidebar";
-import SuccessAlert from "@/shared/ui/alert/SuccessAlert";
-import DeleteDialog from "@/shared/ui/dialog/DeleteDialog";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,13 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <TanstackQueryProvider>
-          <Header />
-          <Sidebar />
-          <DefaultPageWrapper>{children}</DefaultPageWrapper>
-          <SuccessAlert />
-          <DeleteDialog />
-        </TanstackQueryProvider>
+        <TanstackQueryProvider>{children}</TanstackQueryProvider>
       </body>
     </html>
   );

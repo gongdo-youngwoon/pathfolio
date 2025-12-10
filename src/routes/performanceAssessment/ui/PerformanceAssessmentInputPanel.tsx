@@ -3,12 +3,12 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { usePerformanceAssessmentStore } from "../model/usePerformanceAssessmentStore";
-import { AssessmentSchema } from "../model/assessmentSchema";
+import { PerformanceAssessmentSchema } from "../model/performanceAssessmentSchema";
 import { LoaderCircle, Sparkles } from "lucide-react";
 import SingleFileInput from "@/shared/ui/form/SingleFileInput";
 
 export default function PerformanceAssessmentInputPanel() {
-  const [inputValue, setInputValue] = useState<AssessmentSchema>({
+  const [inputValue, setInputValue] = useState<PerformanceAssessmentSchema>({
     file: null,
   });
   const { isGenerating, generatePerformanceAssessment } =
@@ -27,7 +27,7 @@ export default function PerformanceAssessmentInputPanel() {
   };
 
   return (
-    <div className="flex flex-col w-96 h-[calc(100vh-128px)] border border-gray-200 rounded-lg overflow-y-auto container-scroll">
+    <div className="flex flex-col w-96 h-[calc(100vh-96px)] border border-gray-200 rounded-lg overflow-y-auto container-scroll">
       <div className="sticky top-0 py-2 bg-white"></div>
       <div className="flex-1 flex flex-col gap-8 px-4 pb-4">
         <SingleFileInput
