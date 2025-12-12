@@ -13,38 +13,39 @@ export default function SidebarMenuList() {
     <div
       className={clsx("flex flex-col px-2 bg-white", {
         "gap-6": sidebarOpen,
+        "gap-1": !sidebarOpen,
       })}
     >
-      {SIDEBAR_MENU.map((section) => {
+      {SIDEBAR_MENU.map((g) => {
         return (
-          <div key={section.sectionId}>
-            {sidebarOpen && section.sectionLabel && (
+          <div key={g.groupId}>
+            {sidebarOpen && g.groupLabel && (
               <div className="mb-1 px-2 text-xs text-gray-700 font-bold">
-                {section.sectionLabel}
+                {g.groupLabel}
               </div>
             )}
             <ul className="flex flex-col gap-1">
-              {section.items.map((menu) => {
-                const Icon = menu.icon;
+              {g.menus.map((m) => {
+                const Icon = m.icon;
                 return (
                   <li
-                    key={menu.id}
+                    key={m.id}
                     className={clsx(
                       "relative flex items-center gap-2 h-9 px-2 rounded-lg group hover:cursor-pointer",
                       {
-                        "bg-primary text-white": pathname === menu.href,
-                        "text-gray-500 hover:bg-hover-bg hover:text-gray-700":
-                          pathname !== menu.href,
+                        "bg-primary text-white": pathname === m.href,
+                        "text-gray-500 hover:bg-hover hover:text-gray-700":
+                          pathname !== m.href,
                       }
                     )}
-                    onClick={() => router.push(menu.href)}
+                    onClick={() => router.push(m.href)}
                   >
                     <Icon size={18} className="shrink-0" />
                     {sidebarOpen && (
-                      <div className="shrink-0 text-sm">{menu.label}</div>
+                      <div className="shrink-0 text-sm">{m.label}</div>
                     )}
                     {!sidebarOpen && (
-                      <DefaultTooltip direction="right" label={menu.label} />
+                      <DefaultTooltip direction="right" label={m.label} />
                     )}
                   </li>
                 );

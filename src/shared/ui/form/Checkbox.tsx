@@ -14,7 +14,7 @@ export default function Checkbox({ checked, handleClick }: CheckboxProps) {
         {
           "bg-primary border-primary ring ring-primary ring-opacity-10":
             checked,
-          "border-gray-300": !checked,
+          "border-gray-200": !checked,
         }
       )}
       onClick={handleClick}

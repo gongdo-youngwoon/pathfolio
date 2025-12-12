@@ -11,9 +11,9 @@ export default function PrivatePageHeader() {
   const pathname = usePathname();
 
   const currentPageTitle = (() => {
-    for (const section of SIDEBAR_MENU) {
-      for (const item of section.items) {
-        if (item.href === pathname) return item.label;
+    for (const group of SIDEBAR_MENU) {
+      for (const menu of group.menus) {
+        if (menu.href === pathname) return menu.label;
       }
     }
     return "";
@@ -31,15 +31,15 @@ export default function PrivatePageHeader() {
     >
       <div className="text-gray-900 font-semibold">{currentPageTitle}</div>
       <div className="flex gap-2">
-        <div className="flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
+        <div className="flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover">
           <Search size={20} className="text-gray-700" />
         </div>
-        <div className="relative flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover-bg">
+        <div className="relative flex-center size-9 rounded-lg hover:cursor-pointer hover:bg-hover">
           <Bell size={20} className="text-gray-700" />
           <div className="absolute top-1 right-1 size-1.5 bg-primary rounded-full" />
         </div>
         <div className="flex gap-2 pl-2">
-          <div className="size-9 bg-hover-bg border-2 border-primary rounded-full" />
+          <div className="size-9 bg-hover border-2 border-primary rounded-full" />
           <div>
             <div className="text-gray-700 text-sm font-bold">공도</div>
             <div className="text-gray-500 text-xs">Free Plan</div>

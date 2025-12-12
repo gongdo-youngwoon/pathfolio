@@ -12,9 +12,9 @@ import {
 
 export const SIDEBAR_MENU = [
   {
-    sectionId: "section-1",
-    sectionLabel: null,
-    items: [
+    groupId: "section-1",
+    groupLabel: null,
+    menus: [
       {
         id: "new-question",
         icon: Plus,
@@ -36,9 +36,9 @@ export const SIDEBAR_MENU = [
     ],
   },
   {
-    sectionId: "section-2",
-    sectionLabel: "에이전트",
-    items: [
+    groupId: "section-2",
+    groupLabel: "도구",
+    menus: [
       {
         id: "binote",
         icon: NotebookPen,
@@ -55,32 +55,32 @@ export const SIDEBAR_MENU = [
         id: "assessment",
         icon: ClipboardList,
         label: "수행평가",
-        href: "/apps/assessment",
+        href: "/tools/assessment",
       },
     ],
   },
-  {
-    sectionId: "section-3",
-    sectionLabel: "입시진로",
-    items: [
-      {
-        id: "record-analysis",
-        icon: Target,
-        label: "생기부 진단",
-        href: "/admission/record-analysis",
-      },
-      {
-        id: "simulator",
-        icon: LineChart,
-        label: "대입 시뮬레이터",
-        href: "/admission/simulator",
-      },
-      {
-        id: "finder",
-        icon: GraduationCap,
-        label: "대학 전형 찾기",
-        href: "/admission/finder",
-      },
-    ],
-  },
+  // {
+  //   groupId: "section-3",
+  //   groupLabel: "입시진로",
+  //   menus: [
+  //     {
+  //       id: "record-analysis",
+  //       icon: Target,
+  //       label: "생기부 진단",
+  //       href: "/admission/record-analysis",
+  //     },
+  //     {
+  //       id: "simulator",
+  //       icon: LineChart,
+  //       label: "대입 시뮬레이터",
+  //       href: "/admission/simulator",
+  //     },
+  //     {
+  //       id: "finder",
+  //       icon: GraduationCap,
+  //       label: "대학 전형 찾기",
+  //       href: "/admission/finder",
+  //     },
+  //   ],
+  // },
 ] as const;

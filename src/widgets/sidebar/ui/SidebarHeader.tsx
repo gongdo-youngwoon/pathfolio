@@ -40,7 +40,7 @@ export default function SidebarHeader() {
       </div>
       {sidebarOpen && (
         <div
-          className="relative flex-center size-9 rounded-lg text-gray-500 group hover:cursor-pointer hover:bg-hover-bg hover:text-gray-700"
+          className="relative flex-center size-9 rounded-lg text-gray-500 group hover:cursor-pointer hover:bg-hover hover:text-gray-700"
           onClick={toggleSidebar}
         >
           <PanelLeftClose size={18} />
