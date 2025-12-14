@@ -21,7 +21,7 @@ export default function SidebarHeader() {
           }}
         >
           <Map
-            size={18}
+            size={20}
             className={clsx("text-primary", {
               "group-hover:hidden": !sidebarOpen,
             })}

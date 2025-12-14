@@ -78,7 +78,7 @@ export default function ChatThread({ id }: ChatThreadProps) {
             </li>
           );
         })}
-        {isThinking && <DotWaveLoading />}
+        {isThinking && <DotWaveLoading size="size-2" />}
       </ul>
     </div>
   );
