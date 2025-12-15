@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Calendar, ChevronRight, Ellipsis, Shapes } from "lucide-react";
+import { Calendar, Ellipsis, Shapes } from "lucide-react";
 import { AssessmentSchema } from "../../model/dummyAssessments";
-import { ASSESSMENT_STATUS_MAP } from "../../model/assessmentStatusMap";
 import ContextMenu from "@/shared/ui/overlay/ContextMenu";
+import { ASSESSMENT_STATUS_MAP } from "../../model/assessmentStatus";
 
 interface AssessmentCardListItemProps {
   assessment: AssessmentSchema;

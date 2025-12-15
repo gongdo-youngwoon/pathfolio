@@ -4,15 +4,15 @@ import clsx from "clsx";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { SquarePen } from "lucide-react";
-import { ASSESSMENT_STATUS_TABS } from "../../model/assessmentStatusTabs";
+
 import { DUMMY_ASSESSMENTS } from "../../model/dummyAssessments";
 import AssessmentCardListItem from "./AssessmentCardListItem";
+import { ASSESSMENT_STATUS_TABS } from "../../model/assessmentStatus";
 
 export default function AssessmentSelect() {
   const [currentTab, setCurrentTab] = useState(ASSESSMENT_STATUS_TABS[0]);
   const pathname = usePathname();
   const router = useRouter();
-
   const assessments = DUMMY_ASSESSMENTS.filter((a) =>
     currentTab.statuses.includes(a.status)
   );

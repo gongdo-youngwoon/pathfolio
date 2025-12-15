@@ -1,6 +1,6 @@
 import PrivatePageHeader from "@/widgets/header/ui/PrivatePageHeader";
 import Sidebar from "@/widgets/sidebar/ui/Sidebar";
-import PrivatePageWrapper from "../wrapper/PrivatePageWrapper";
+import PrivatePageWrapper from "../../shared/ui/wrapper/PrivatePageWrapper";
 import SuccessAlert from "@/shared/ui/alert/SuccessAlert";
 import DeleteDialog from "@/shared/ui/dialog/DeleteDialog";
 

@@ -6,15 +6,16 @@ import DotWaveLoading from "@/shared/ui/loading/DotWaveLoading";
 
 interface AssessmentInstructionUploaderProps {
   isLoading: boolean;
-  handleUpload: () => void;
+  file: File | null;
+  handleUpload: (file: File) => void;
 }
 
 export default function AssessmentInstructionUploader({
   isLoading,
+  file,
   handleUpload,
 }: AssessmentInstructionUploaderProps) {
   const [isDragging, setIsDragging] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -31,15 +32,13 @@ export default function AssessmentInstructionUploader({
 
     const file = e.dataTransfer.files[0];
     if (!file) return;
-    setFile(file);
-    handleUpload();
+    handleUpload(file);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setFile(file);
-    handleUpload();
+    handleUpload(file);
   };
 
   return (
