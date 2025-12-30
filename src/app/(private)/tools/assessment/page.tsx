@@ -28,7 +28,7 @@ export default async function AssessmentToolPage(props: {
           시간 많이 걸리던 수행평가, 이제 빠르고 쉽게 끝내보세요.
         </p>
       </div>
-      <ul className="sticky top-16 flex gap-4 px-8 py-4 bg-white border-b border-b-gray-200">
+      <ul className="sticky top-16 flex gap-4 px-8 py-4 bg-white border-b border-b-gray-200 z-20">
         {ASSESSMENT_STEPS.map((s) => {
           const step = s.id.split("-")[1];
           return (

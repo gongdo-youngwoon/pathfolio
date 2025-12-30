@@ -22,7 +22,7 @@ export default function PrivatePageHeader() {
   return (
     <div
       className={clsx(
-        "fixed right-0 flex justify-between items-center h-16 px-8 bg-white border-b border-b-gray-200 transition-default z-10",
+        "fixed right-0 flex justify-between items-center h-16 px-8 bg-white border-b border-b-gray-200 transition-default z-30",
         {
           "left-64": sidebarOpen,
           "left-[52px]": !sidebarOpen,
